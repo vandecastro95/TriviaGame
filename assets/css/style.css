@@ -1,0 +1,75 @@
+
+html, body {
+    height:100%;
+    background: black;
+} 
+
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+.opening{
+    background-image: url("../images/opening.jpg");
+}
+
+.opening {
+    height: 80%;
+    width: auto;
+    margin-top: 5%;
+}
+
+
+.question {
+    position: absolute;
+    padding: 5px;
+    color: white;
+}
+
+h1 {
+    display:inline;
+    width:80%;
+    text-align:center;
+ }
+
+.bordered {
+    border-style: double;
+    border-color: black;
+    border-width: 9px;
+}
+
+.answer {
+    top: 20%;
+    height: 100px;
+    position: relative;
+    top: 200px;
+    
+    text-align: center;
+}
+
+.start {
+    position: absolute;
+    right: 10%;
+    top: 80%;
+}
+
+.bg {
+    transition: background-color 0.5s ease;
+    background-color: #7F170E;
+}
+
+.tx {
+    color: #FEF8DF;
+}
+
+.answer:hover {
+    transition: all 0.5s ease;
+    background: green;
+    padding: 20px;
+}
+
+.alert {
+    position: absolute;
+    bottom: 0%;
+    height: 80px;
+    width: 80%;
+    float: none;
+    margin: 0 auto;
+}
