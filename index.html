@@ -14,31 +14,47 @@
 
 <body>
     <button type="button" class="btn btn-light start">Press Any Key to Start</button>
-    
+
     <div class="container opening text-danger">
 
-        <div class="row">
+        <div class="row main">
             <div class=" mt-5">
-                <h1 class="question border-0 tx text-center"></h1>
+                <h1 class="question border-0 txwhite text-center"></h1>
             </div>
         </div>
 
-        <div class="choices">
-        <div class="row m-4">
-            <div class="col-5 answer mx-4 choiceA tx rounded"></div>
-            <div class="col-5 answer mx-4 choiceB tx rounded"></div>
-        </div>
+        <div class="choices main">
+            <div class="row m-4">
+                <div class="col-5 answer mx-4 choiceA txwhite rounded answerHover"></div>
+                <div class="col-5 answer mx-4 choiceB txwhite rounded answerHover"></div>
+            </div>
 
-        <div class="row m-4">
-            <div class="col-5 answer mx-4 choiceC tx roounded"></div>
-            <div class="col-5 answer mx-4 choiceD tx rounded    "></div>
+            <div class="row m-4 main">
+                <div class="col-5 answer mx-4 choiceC txwhite rounded answerHover"></div>
+                <div class="col-5 answer mx-4 choiceD txwhite rounded answerHover"></div>
+            </div>
         </div>
     </div>
+    <div class="row alert">
+        <h1 class="mb-2 pl-2 text-left timer rounded txred"></h1>
+
     </div>
-    <div class="alert alert-warning fade show mx-2" role="alert">
-            <strong></strong>
-            </button>
-          </div>
+
+    <div class="container closing">
+        <div class="row closingdiv">
+            <div class="col-12"></div>
+        </div>
+        <div class="row fixed-bottom mx-2">
+            <div class="col-12">
+                <h1 class="txwhite">Trivia Night Over!</h1>
+                <h2 class="jumbotron text-dark">Your Final Score: 54</h2>
+            </div>
+        </div>
+    </div>
+    <audio>
+        <source src="barmusic.mp3"></source>
+    </audio>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="assets/javascript/app.js"></script>
 </body>

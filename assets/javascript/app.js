@@ -1,11 +1,11 @@
-let data = {
+let data = {  //trivia question list
     '0': {
         question: 'What Animal is the national emblem of Canada?',
         answerA: 'Moose',
         answerB: 'Platypus',
         answerC: 'American Eagle',
         answerD: 'Beaver',
-        answer: '.choiceB'
+        answer: '.choiceD'
     },
     '1': {
         question: 'How many players on the field are there in a baseball team?',
@@ -75,7 +75,7 @@ let data = {
         question: 'According to the song, what did my true love give to me on the seventh day of Christmas?',
         answerA: 'Geese A-laying',
         answerB: 'Maids A-milking',
-        answerC: 'Swans A-Swimming.',
+        answerC: 'Swans A-Swimming',
         answerD: 'I hate christmas',
         answer: '.choiceC'
     },
@@ -90,77 +90,141 @@ let data = {
 }
 
 function displayQuestion() { //prints questions and answers
-    a = questions[Math.floor(Math.random() * questions.length)]; //randomizing questions;
-    $('.row').show();
-    document.querySelector('.question').innerText = data[a].question;
-    document.querySelector('.choiceA').innerText = data[a].answerA;
-    document.querySelector('.choiceB').innerText = data[a].answerB;
-    document.querySelector('.choiceC').innerText = data[a].answerC;
-    document.querySelector('.choiceD').innerText = data[a].answerD;
-    $(data[a].answer).addClass("rightAnswer");
+
+    if (questions.length != 0) {
+        $('.row').hide();
+        a = questions[Math.floor(Math.random() * questions.length)]; //randomizing questions;
+        $('.row').show("slow");
+        document.querySelector('.question').innerText = data[a].question;
+        document.querySelector('.choiceA').innerText = data[a].answerA;
+        document.querySelector('.choiceB').innerText = data[a].answerB;
+        document.querySelector('.choiceC').innerText = data[a].answerC;
+        document.querySelector('.choiceD').innerText = data[a].answerD;
+        $(data[a].answer).addClass("rightAnswer");
+        timer = 15; //restarts timer
+        $('.alert').show();
+        document.querySelector('.timer').innerText = timer;
+        run();
+    }
+    else {
+            //closing logic
+        $('.main').hide("slow");
+        $('.alert').hide();
+        $('body').addClass("closinggif");
+        $('.closing').show("slow");
+        document.querySelector('.jumbotron').innerText = "Final Score: " + wins;
+    }
 
 }
 
-function newQuestion() {
-    $('.row').hide();
-    $(data[a].answer).removeClass("rightAnswer"); 
+function newQuestion() {    //loops to a new question
+    $(data[a].answer).removeClass("rightAnswer");
+    $(data[a].answer).removeClass("guessedRight");
     a = null;
     nextRound = false;
-    console.log(questions)
-    setTimeout(function () {displayQuestion()}, 1000);
+    displayQuestion()
+    clearInterval(intervalId);
 
 }
 
-function timeUp() {
-    counter++;
+function timeUp() { //stops when timer is up
+    document.querySelector('.timer').innerText = "Time's up!";
     console.log("times up");
-    questions.splice( questions.indexOf(a), 1 );
-    newQuestion();
+    questions.splice(questions.indexOf(a), 1);
+    $(data[a].answer).addClass("guessedRight");
+    setTimeout(function () { newQuestion() }, 2000);
 }
+
+
+function run() {
+    intervalId = setInterval(decrement, 1000);
+
+
+}
+
+function decrement() {
+    document.querySelector('.timer').innerText = timer;
+    --timer;
+
+    if (timer === 0) {
+
+        timeUp();
+
+    }
+}
+
 let a;
-let counter = 0;
+
 let wins = 0;
-let questions=['0','1','3','4','5','6','7','8','9','10']
+
+let questions = ['0', '1', '3', '4', '5', '6', '7', '8', '9', '10'];
+
 let questionsDone = [];
+
 let nextRound = false;
+
+let timer = 15;
+
+let intervalId;
+
+
+
 
 
 $(document).ready(function () {
     $('.row').hide();
-
+    $('.alert').hide();
+    $('.closing').hide();
     $(document).one("keyup", function () {
-
         $('body').addClass("bg");
-       
+
         $('.start').hide();
 
         $('.container').removeClass("opening");
 
-        
+        $("audio")[0].play();
+
+
         displayQuestion();
-        
+        $("audio").animate({ volume: 0.1 }, 3000);
+
+
         if (nextRound == false) {
             nextRound = true;
-            
-            setTimeout(function () {timeUp()}, 15000);
+
+
 
             $(".answer").on("click", function () {
-                if($(this).hasClass("rightAnswer") == false){
-                    console.log(
-                        'you lose'
-                    )
-                    console.log(wins);
-                    wins++;
-                    questions.splice( questions.indexOf(a), 1 );
-                    newQuestion();
+                if ($(this).hasClass("rightAnswer") == false) {
+
+                    $(data[a].answer).addClass("guessedRight");
+                    $(this).addClass("guessedWrong");
+                    $('.answer').removeClass("answerHover");
+                    questions.splice(questions.indexOf(a), 1);
+
+                    $('.alert').hide("slow");
+                    setTimeout(function () {
+
+                        $(data[a].answer).removeClass("guessedRight");
+                        $('.answer').removeClass("guessedWrong");
+                        $('.answer').addClass("answerHover");
+                        newQuestion()
+                    }, 2000);
                 }
-                
-                if ($(this).hasClass("rightAnswer" ) ){
+
+                if ($(this).hasClass("rightAnswer")) {
+
+                    $(this).addClass("guessedRight");
                     wins++;
-                    questions.splice( questions.indexOf(a), 1 );
-                    console.log(a);
-                    console.log('right answer');
-                    newQuestion();
+                    questions.splice(questions.indexOf(a), 1);
+                    $('.answer').removeClass("answerHover");
+
+                    $('.alert').hide("slow");
+                    setTimeout(function () {
+                        $(this).removeClass("guessedRight");
+                        $('.answer').addClass("answerHover");
+                        newQuestion()
+                    }, 2000);
                 }
 
             })
