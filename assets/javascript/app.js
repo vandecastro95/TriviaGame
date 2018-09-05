@@ -172,9 +172,9 @@ let intervalId;
 
 
 $(document).ready(function () {
-    $('.closing').hide();
+    $('.closing').removeClass("hide").hide();
     $('.row').hide();
-    $('.alert').hide();
+    $('.alert').removeClass("hide").hide();
     $(document).one("keyup", function () {
         $('body').addClass("bg");
 
