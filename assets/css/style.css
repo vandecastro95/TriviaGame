@@ -8,6 +8,7 @@ html, body {
 
 .opening{
     background-image: url("../images/opening.jpg");
+    background-repeat: no-repeat;
 }
 
 .opening {
