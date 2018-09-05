@@ -1,0 +1,107 @@
+
+html, body {
+    height:100%;
+    background: black;
+} 
+
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+.opening{
+    background-image: url("../images/opening.jpg");
+}
+
+.opening {
+    height: 80%;
+    width: auto;
+    margin-top: 5%;
+}
+
+
+.question {
+    position: absolute;
+    padding: 5px;
+    color: white;
+}
+
+h1 {
+    display:inline;
+    width:80%;
+    text-align:center;
+ }
+
+.bordered {
+    border-style: double;
+    border-color: black;
+    border-width: 9px;
+}
+
+.answer {
+    top: 20%;
+    height: 100px;
+    position: relative;
+    top: 200px;
+    
+    text-align: center;
+}
+
+.start {
+    position: absolute;
+    right: 10%;
+    top: 80%;
+}
+
+.bg {
+    transition: background-color 0.5s ease;
+    background-color: #7F170E;
+}
+
+.txwhite {
+    color: #FEF8DF;
+}
+
+.txred {
+    background-color: #FEF8DF;
+    color: #7F170E;
+}
+
+.answerHover:hover {
+    transition: all 0.5s ease;
+    background: #FEF495;
+    color: #7F170E;
+    padding: 20px;
+}
+
+.alert {
+    position: absolute;
+    bottom: 0%;
+    left: 80%;
+    height: 80px;
+    margin: 5px;
+    width: 100%;
+    
+}
+
+.closingdiv {
+    height: 400px;
+    width: auto;
+    overflow: hidden;
+}
+
+.closinggif {
+    background-image: url("../images/closing.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.guessedRight {
+    transition: all 0.5s ease;
+    background-color: green;
+    padding: 20px;
+}
+
+.guessedWrong {
+    transition: all 0.5s ease;
+    background-color: #FE0000;
+    padding: 20px;
+}
