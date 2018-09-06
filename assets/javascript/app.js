@@ -132,6 +132,8 @@ function newQuestion () { // loops to a new question
 }
 
 function timeUp () { // stops when timer is up
+    
+  document.querySelector('.timer').innerText = "Time's up!"
   $('.alert').hide()
   questions.splice(questions.indexOf(a), 1)
   $(data[a].answer).addClass('guessedRight')
@@ -144,12 +146,12 @@ function run () {
 }
 
 function decrement () {
+    
   document.querySelector('.timer').innerText = timer
   --timer
 
-  if (timer < 0) {
+  if (timer == -2) {
     timer = 15;
-  document.querySelector('.timer').innerText = "Time's up!"
     timeUp()
   }
 }
