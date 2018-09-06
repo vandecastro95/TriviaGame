@@ -16,10 +16,10 @@
     
 
     <div class="container opening text-danger">
-        <button type="button" class="btn btn-light start">Press Any Key to Start</button>
+        <!-- <button type="button" class="btn btn-light start">Press Any Key to Start</button> -->
 
         <div class="row main">
-            <div class="col-12 mt-5 mr-2">
+            <div class="col-12 mt-5 ml-4">
                 <h1 class="question border-0 txwhite"></h1>
             </div>
         </div>
@@ -47,13 +47,24 @@
         </div>
         <div class="row fixed-bottom mx-2">
             <div class="col-12">
-                <h1 class="txwhite">Trivia Night Over!</h1>
-                <h2 class="jumbotron text-dark">Your Final Score: 54</h2>
+                <h2 class="txwhite">Trivia Night Over!</h2>
+                <h2 class="jumbotron text-dark"></h2>
             </div>
         </div>
     </div>
-    <audio>
+
+    
+    <audio id="backgroundAudio">
         <source src="barmusic.mp3"></source>
+    </audio>
+    <audio class="timerAudio">
+        <source src="timer.mp3"></source>
+    </audio>
+    <audio class="rightAudio">
+        <source src="Error-sound.mp3"></source>
+    </audio>
+    <audio class="wrongAudio">
+        <source src="Correct-answer.mp3"></source>
     </audio>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
